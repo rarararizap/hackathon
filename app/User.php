@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nickname', 'password',
     ];
 
     /**
@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    
+    public function bokes()
+     {
+        return $this->hasMany(Boke::class);
+     }
+    
+    public function favorite_bokes()
+     {
+        return $this->belongsToMany(Boke::class, 'user_favorite', 'user_id', 'favorite_id')->withTimestamps();
+     }
 }
