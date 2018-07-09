@@ -4,4 +4,3 @@
     @include('bokes.bokes',['bokes'=>$bokes])
     
 
-@endsection
