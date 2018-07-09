@@ -14,12 +14,10 @@ class BokeController extends Controller
         ->join('users', 'bokes.user_id', '=', 'users.id')
         ->join('odais', 'bokes.odai_id', '=', 'odais.id')
         ->select('users.nickname','bokes.content','odais.filename')
-        ->get();
-        
-        
+        ->paginate(10);
 
          return view('index', ['bokes' =>$bokes] );
     }
 
-    
+
 }
