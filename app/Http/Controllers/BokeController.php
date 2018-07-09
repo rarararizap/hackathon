@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Boke;
+use App\User;
 use Illuminate\Http\Request;
 
 class BokeController extends Controller
 {
     public function index()
     {
-        $data = [];
-        if (\Auth::check()) {
-            $bokes = bokes()->orderBy('created_at', 'desc')->paginate(10);
+        $bokes = \DB::table('bokes')
+        ->join('users', 'bokes.user_id', '=', 'users.id')
+        ->join('odais', 'bokes.odai_id', '=', 'odais.id')
+        ->select('users.nickname','bokes.content','odais.filename')
+        ->get();
+        
+        
 
-            $data = [
-                'user' => $user,
-                'bokes' => $bokes,
-                
-            ];
-        }
-        return view('welcome', $data);
+         return view('index', ['bokes' =>$bokes] );
     }
 
-
+    
 }

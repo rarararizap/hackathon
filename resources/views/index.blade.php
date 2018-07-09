@@ -1,0 +1,1 @@
+@include('bokes.bokes',['bokes'=>$bokes])
