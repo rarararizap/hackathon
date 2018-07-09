@@ -10,5 +10,5 @@
     </li>
 @endforeach
 </ul>
-
+{!! $bokes -> render() !!}
 @endif
