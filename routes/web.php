@@ -15,4 +15,7 @@
 
 Auth::routes();
 
-Route::get('/', 'BokeController@index')->name('boke');
+Route::get('/', 'BokeController@index')->name('boke.index');
+
+Route::get('/odais', 'OdaiController@index')->name('odai.index');
+
