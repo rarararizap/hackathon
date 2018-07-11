@@ -10,4 +10,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
+    public function counts($user) {
+        $count_bokes = $user->bokes()->count();
+        $count_favorite_bokes = $user->favorite_bokes()->count();
+
+        return [
+            'count_bokes' => $count_bokes,
+            'count_favorite_bokes' => $count_favorite_bokes,
+        ];
+    }
 }
